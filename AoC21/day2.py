@@ -2,7 +2,7 @@ import pandas as pd
 
 # Part 1:
 
-df = pd.read_csv('/content/AoC_2_2021.csv')
+df = pd.read_csv('AoC21/data/AoC_2_2021.csv')
 df = df.rename(columns={df.columns[0]: 'Input'})
 df = df[['Input']]
 df = df['Input'].str.split(' ', expand=True)
@@ -14,8 +14,7 @@ result = df.groupby('direction')['distance'].sum()
 depth = result['down'] - result['up']
 forward = result['forward']
 
-print("Result Part 1")
-print(depth * forward)
+print(f'Result Part 1 {depth * forward}')
 
 # Part 2:
 
@@ -34,5 +33,4 @@ for index, row in df.iterrows():
     if row['direction'] == 'down':
         aim_multiplier += row['distance']
 
-print("Result Part 2")
-print(horizontal * aim_total)
+print(f'Result Part 2 {horizontal * aim_total}')
